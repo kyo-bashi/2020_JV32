@@ -41,6 +41,18 @@ public class R01_Servlet extends HttpServlet{
 			// デバッグ用出力例
 			System.out.println("step-01");
 
+			//jspから値の受け取り
+			String strName = req.getParameter("txtName");
+			//		  ↑１：通常入力される、２：未入力、３：値が渡ってこな
+
+			//値が渡ってきているか判定
+			if(strName != null) {
+				//未入力検証 equal = equals ==
+				if(strName.equals("")) {
+					strName = "（未入力）";
+				}
+			}
+
 			// サーブレットからjspに遷移
 			ServletContext sc = null;
 			sc = getServletContext();
