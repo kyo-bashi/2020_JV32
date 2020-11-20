@@ -2,6 +2,7 @@ package myServlet;
 
 import java.io.IOException;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 //HttpServletインポート
@@ -33,12 +34,17 @@ public class R01_Servlet extends HttpServlet{
 
 
 	protected void fncServlet(HttpServletRequest req, HttpServletResponse resp)
-	throws ServletException, IOException{
-		//	サーブレットの処理を書く
-		req.setCharacterEncoding("UTF8");
+		throws ServletException, IOException{
+			//	サーブレットの処理を書く
+			req.setCharacterEncoding("UTF8");
 
-		// デバッグ用出力例
-		System.out.println("step-01");
-	}
+			// デバッグ用出力例
+			System.out.println("step-01");
+
+			// サーブレットからjspに遷移
+			ServletContext sc = null;
+			sc = getServletContext();
+			sc.getRequestDispatcher("/jsp/R01_output.jsp").forward(req,resp);
+		}
 
 }
